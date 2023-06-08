@@ -7,15 +7,17 @@ class Weather extends StatefulWidget {
 }
 
 class _WeatherState extends State<Weather> {
-  late double? latitude = 0.0;
-  late double? longitude = 0.0;
-  late int? temperature = 0;
-  late double? windSpeed = 0.0;
-  late int? windDirection = 0;
-  late int? windGust = 0;
-  // late int? pressure = 0;
-  // late String country = 'None';
-  // late String city = 'None';
+  List<dynamic> windStateList = [];
+  late dynamic? latitude = 0.0;
+  late dynamic? longitude = 0.0;
+  late dynamic? city = 'None';
+  late dynamic? temperature = 0;
+  late dynamic? windSpeed = 'None';
+  late dynamic? windDirection = 0;
+  late dynamic? windGust = 0;
+  late dynamic? pressure = 0;
+  late dynamic? country = 'None';
+  int degreeSymbol = 0x00B0;
   WeatherModel weatherModel = WeatherModel();
 
   @override
@@ -32,84 +34,56 @@ class _WeatherState extends State<Weather> {
     setState(() {
       latitude = weatherData['coord']['lat'];
       longitude = weatherData['coord']['lon'];
+      city = weatherData['name'];
+      country = weatherData['sys']['country'];
       windSpeed = weatherData['wind']['speed'];
+      // windSpeed = windSpeedTemp.toString();
       windGust = weatherData['wind']['gust'];
       windDirection = weatherData['wind']['deg'];
-      double temp = weatherData['main']['temp'];
-      temperature = temp.toInt();
-      // pressure = weatherData['main']['pressure'];
-      // country = weatherData['sys']['country'];
-      // city = weatherData['name'];
+      temperature = weatherData['main']['temp'];
+      // temperature = temp.toInt();
+      pressure = weatherData['main']['pressure'];
     });
-  }
+    windStateList.add('Latitude: $latitude');
+    windStateList.add('Longitude: $longitude');
+    windStateList.add('City: $city');
+    windStateList.add('Country: $country');
+    windStateList.add('Wind Speed: $windSpeed MPH');
+    windStateList.add('Wind Gust: $windGust MPH');
+    windStateList.add('Wind Direction: $windDirection\u00B0');
+    windStateList.add('Temperature: $temperature\u2109');
+    windStateList.add('Barometric Pressure: $pressure mb');
+    print('This is the windStateList: $windStateList');
+  } //getLocationData
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              'Latitude: $latitude',
-              style: TextStyle(
-                fontFamily: 'Spartan MB',
-                fontSize: 30.0,
+      appBar: AppBar(
+        title: Text('Real Time Wind Report'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: ListView.separated(
+          itemCount: windStateList.length,
+          itemBuilder: (context, index) {
+            return Container(
+              padding: EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                border: Border(
+                  top: BorderSide(width: 1, color: Colors.black),
+                ),
               ),
-            ),
-            Text(
-              'Longitude: $longitude',
-              style: TextStyle(
-                fontFamily: 'Spartan MB',
-                fontSize: 30.0,
+              child: Text(
+                windStateList[index].toString(),
               ),
-            ),
-            Text(
-              'Temperature: $temperature°  ',
-              style: TextStyle(
-                fontFamily: 'Spartan MB',
-                fontSize: 30.0,
-              ),
-            ),
-            Text(
-              'Wind Speed: $windSpeed  ',
-              style: TextStyle(
-                fontFamily: 'Spartan MB',
-                fontSize: 30.0,
-              ),
-            ),
-            Text(
-              'Wind Direction: $windDirection  ',
-              style: TextStyle(
-                fontFamily: 'Spartan MB',
-                fontSize: 30.0,
-              ),
-            ),
-            Text(
-              'Wind Gust: $windGust  ',
-              style: TextStyle(
-                fontFamily: 'Spartan MB',
-                fontSize: 30.0,
-              ),
-            ),
-            // Text(
-            //   'Pressure: $pressure',
-            //   style: TextStyle(
-            //     fontFamily: 'Spartan MB',
-            //     fontSize: 30.0,
-            //   ),
-            // ),
-            // Text(
-            //   'City: $city  ',
-            //   style: TextStyle(
-            //     fontFamily: 'Spartan MB',
-            //     fontSize: 40.0,
-            //   ),
-            // ),
-          ],
+            );
+          },
+          separatorBuilder: (context, index) {
+            return Divider(color: Colors.black);
+          },
         ),
       ),
     );
-  }
-}
+  } //Widget build
+} //class _WeatherState
