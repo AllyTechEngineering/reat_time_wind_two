@@ -21,6 +21,33 @@ const BoxDecoration styleBoxDecoration = (BoxDecoration(
   ),
 ));
 
+// Color scheme https://colorhunt.co/palette/0b244719376d576cbca5d7e8
+
+// screens I
+
+const String kIntroToSailText =
+    'Hueston Sailing Association (HSA) is sponsoring its 19th Annual Sailing School Program at Hueston Woods State Park\'s Acton Lake. HSA Members will be on hand to provide instruction and on the water sailing experience. The first Introduction to Sailing Class will be held 10:45 a.m. to 4 p.m. on Saturday, May 20th . If you can’t attend this date, we will offer classes  again on Saturday, June 24th, Saturday, July 22 and Saturday, August 19th. All classes are from 10:45 a.m. – 4 p.m. All class dates offer identical content and include both on and off the water instruction in rigging, launching, and sailing. HSA will provide instructors, boats and life jackets. Weather make-up dates will be provided if necessary. Cost is \$75, but you can add your spouse for \$50 and children (17 & under) for \$25. (No more than \$175 for the family.) Class size is limited. Bring the family. Sign up early. To sign up or get more details, call Brett Hart at 937-272-5565 (cell) or by email at brettrhart@aol.com. Participants should meet us near the boat ramps (by the big tree) at 10:30 am for a 10:45 start. Look for the HSA signs.';
+const String kLearnToSailText =
+    'HSA also offers Learn to Sail classes. These classes are conducted on weekdays and on some Saturdays if they are available. In a Learn to Sail class, you will learn how to sail on your own in one of our boats or in your boat if you have one. Three days are usually all that is needed for most people and the cost is \$175 for those three days. If at the end of the Learn to Sail sessions your instructor certifies you as capable of rigging, launching, and helming the boat on your own, you become eligible to sail one of HSA\'s boats whenever you like as long as you are member of HSA. If you already know how to sail and would like to sail one of HSA\'s boats, all you need to do is sign up for the certification session and, if the instructor certifies you, you can begin sailing one of HSA\'s boats once you join the club. Cost of certification session is \$75. To sign up or get more details on any of the classes, call Brett Hart at 937-272-5565 (cell) or by email at brettrhart@aol.com.';
+const String kJuniorSailingCampText =
+    'Each summer 20 to 25 boys and girls ages 11 through 15 have the opportunity to participate in Junior Sailing Camp. They enjoy instruction on land, followed by practice on the water for three days. They learn how to handle and launch the Sunfish, sail it, and even race versus their fellow campers by the end of the three days. They camp in tents and enjoy meals together. This program has been going for many years and has been the starting point for many great sailors. It is so popular there is usually a waiting list, so it is best to get your name in by March. Participants are encouraged to bring a Sunfish if they have one or can borrow one, but if they do not have one, we can find one for them. For additional information, contact Amy Marks by email: amy.marks00@gmail.com.';
+const String kPublicSailingProgramOneText = 'Intro to Sailing';
+const String kPublicSailingProgramTwoText = 'Learn to Sail';
+const String kPublicSailingProgramThreeText = 'Junior Sailing Camp';
+const String kPublicSailingProgramFourText = 'Sailing Experience';
+const String kHsaTitleText = 'Hueston Sailing Association';
+// const AppBar styleAppBar = ();
+final ButtonStyle kStyleElevatedButton = ElevatedButton.styleFrom(
+  side: const BorderSide(width: 2, color: Color(kLightestBlue), style: BorderStyle.solid),
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(buttonRadiusValue),
+  ),
+  backgroundColor: const Color(kDarkBlue),
+  padding: const EdgeInsets.only(left: 6.0, right: 6.0, top: 0.0, bottom: 0.0),
+  elevation: 25.0,
+  shadowColor: const Color(kLightestBlue),
+  textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, fontFamily: kFontTypeForApp, color: Color(lightBlue)),
+);
 const double kContainerHeight = 110.0;
 const double kContainerFontHeight = 14.0;
 const double kAppBarFontHeight = 20.0;

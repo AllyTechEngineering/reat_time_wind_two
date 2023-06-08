@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import '../models/weather_model.dart';
 
-class Weather extends StatefulWidget {
+class WeatherScreen extends StatefulWidget {
+  static String id = 'weather_screen';
+  const WeatherScreen({super.key});
   @override
-  _WeatherState createState() => _WeatherState();
+  _WeatherScreenState createState() => _WeatherScreenState();
 }
 
-class _WeatherState extends State<Weather> {
+class _WeatherScreenState extends State<WeatherScreen> {
   List<dynamic> windStateList = [];
   late dynamic? latitude = 0.0;
   late dynamic? longitude = 0.0;
@@ -63,7 +65,7 @@ class _WeatherState extends State<Weather> {
         title: Text('Real Time Wind Report'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: EdgeInsets.fromLTRB(8.0, 20.0, 8.0, 10.0),
         child: ListView.separated(
           itemCount: windStateList.length,
           itemBuilder: (context, index) {
